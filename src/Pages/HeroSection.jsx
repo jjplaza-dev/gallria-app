@@ -108,7 +108,7 @@ const HeroSection = () => {
         <div className='w-screen h-screen sticky top-0 overflow-hidden'>
             
             {/* MID SECTION LAYOUT */}
-            <div className='mid-section w-full h-[50%] border-y border-white/5 absolute bottom-0 translate-y-[-50%] flex flex-col justify-center items-center rotate-3'>
+            <div className='mid-section w-full h-[50%] absolute bottom-0 translate-y-[-50%] flex flex-col justify-center items-center rotate-3'>
             
                 {/* TOP CAROUSEL WRAPPER */}
                 <div 

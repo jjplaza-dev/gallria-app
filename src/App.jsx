@@ -5,6 +5,7 @@ import FrontPage from "./Pages/FrontPage"
 import Loading from "./Components/Loading"
 import gsap from "gsap"
 import ReactLenis from "lenis/react"
+import Footer from "./Components/Footer"
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +13,7 @@ function App() {
 
    useEffect(() => {
     function update(time) {
-      lenisRef.current?.lenis?.raf(time * 1000)
+      lenisRef.current?.lenis?.raf(time * 500)
     }
   
     gsap.ticker.add(update)
@@ -33,6 +34,7 @@ function App() {
     
         </Routes>
         </div>)}
+        <Footer />
         
       </BrowserRouter>
   )

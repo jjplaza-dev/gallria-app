@@ -4,3 +4,34 @@ body {
   background-color: rgba(0, 0, 0, 0.850);
   overflow-x: hidden;
 }
+
+
+:root {
+  --h1-size: clamp(4rem, 6vw + 2rem, 8rem);
+  --h2-size: clamp(2.5rem, 4.5vw + 1rem, 4rem);
+  --h3-size: clamp(1.2rem, 3vw + 0.25rem, 1.5rem);
+
+  --h4-size: clamp(1rem, 2.5vw + 0.2rem, 1.25rem);
+  --h5-size: clamp(0.7rem, 1vw + 0.08rem, 0.85rem);
+}
+
+h1 {
+  font-size: var(--h1-size);
+}
+
+h2 {
+  font-size: var(--h2-size);
+}
+
+h3 {
+  font-size: var(--h3-size);
+}
+
+h4 {
+  font-size: var(--h4-size);
+}
+
+h5 {
+  font-size: var(--h5-size);
+}
+
