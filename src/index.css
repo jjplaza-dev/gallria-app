@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 body {
-  background-color: rgba(0, 0, 0, 0.850);
+  background-color: white;
   overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
 }
 
 
@@ -33,5 +37,11 @@ h4 {
 
 h5 {
   font-size: var(--h5-size);
+}
+
+.yesteryear-regular {
+  font-family: "Yesteryear", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 

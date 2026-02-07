@@ -3,11 +3,13 @@ import HeroSection from './HeroSection'
 import WhoWeAre from '../Components/WhoWeAre'
 import Discover from '../Components/Discover'
 import ProjectsPreview from '../Components/ProjectsPreview'
+import Hero from '../Components/Hero'
 
 const FrontPage = () => {
   return (
     <main className='w-full h-fit bg-transparent'>
-        <HeroSection />
+        {/* <HeroSection /> */}
+        <Hero />
         <WhoWeAre />
         <Discover />
         <ProjectsPreview />

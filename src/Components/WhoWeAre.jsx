@@ -18,7 +18,7 @@ const WhoWeAre = () => {
     }
   };
 
-  const ADJECTIVES = ["RAW", "BOLD", "HONEST", "TIMELESS", "ETHEREAL", "CINEMATIC", "UNAPOLOGETIC"];
+  const ADJECTIVES = ["INTUITIVE", "REFINED", "EVOCATIVE", "TIMELESS", "ETHEREAL", "CINEMATIC", "VIBRANT"];
   const sortedWords = [...ADJECTIVES].sort((a, b) => a.length - b.length);
 
   useGSAP(() => {
@@ -94,14 +94,14 @@ const WhoWeAre = () => {
         <div className='w-full h-[200vh] translate-y-[-50%] flex flex-col items-center justify-center' ref={containerRef}>
             
             {/* Top Section Decoration */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[50vw] h-[60vh] bg-indigo-500/1 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[50vw] h-[60vh] rounded-full blur-[100px] pointer-events-none" />
 
             {/* --- TOP HALF (Dark Theme) --- */}
             <div className="relative h-screen flex flex-col items-center justify-center max-w-4xl px-6 text-center">
                 
                 {/* Small Label with Icon */}
                 <div className="flex flex-col items-center gap-4 mb-12">
-                    <div className="p-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+                    <div className="p-3 rounded-full border border-white backdrop-blur-md">
                         <Aperture className="text-indigo-400 spinner-icon" size={24} />
                     </div>
                     <span className="text-xs font-mono tracking-[0.3em] text-zinc-500 uppercase">
@@ -115,7 +115,7 @@ const WhoWeAre = () => {
                         <div key={index} className="overflow-hidden">
                             <h2 
                             ref={addToRefs} 
-                            className="text-3xl md:text-4xl lg:text-6xl font-serif text-zinc-100 tracking-tight leading-tight origin-top-left"
+                            className="text-3xl md:text-4xl lg:text-6xl font-serif text-black tracking-tight leading-tight origin-top-left font-extrabold"
                             >
                             {line.includes("Gallria") ? (
                                 <span className="text-indigo-400">{line}</span>
@@ -130,10 +130,10 @@ const WhoWeAre = () => {
 
             {/* --- BOTTOM HALF: Color Transition Section --- */}
             {/* Added explicit bg-transparent so GSAP can animate it from transparent/dark to white */}
-            <div ref={bottomSectionRef} className='w-full h-[100vh] relative flex flex-col items-start justify-center overflow-hidden bg-transparent'>
+            <div ref={bottomSectionRef} className='w-full h-[100vh] relative flex flex-col items-start justify-center overflow-hidden bg-white'>
                 
                 {/* Words Container */}
-                <div ref={wordsWrapperRef} className="flex flex-col items-start gap-2 md:gap-4 z-10 px-6 md:px-20 w-full">
+                <div ref={wordsWrapperRef} className="flex flex-col items-start gap-2 md:gap-4 z-10 px-2 md:px-6 w-full">
                     {sortedWords.map((word, wordIndex) => (
                         <div key={wordIndex} className="flex w-full">
                             {/* Split word into characters */}

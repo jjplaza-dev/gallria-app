@@ -10,7 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 // 1. Placeholder Data
 const PLACEHOLDERS = Array.from({ length: 6 }, (_, i) => ({
   id: i,
-  text: `GALLRIA_IMG_0${i + 1}`
+  text: `GALLRIA_IMG_0${i + 1}`,
+  imgurl: "src/assets/HeroAssets/1.jpg"
 }));
 
 const HeroSection = () => {
@@ -83,20 +84,55 @@ const HeroSection = () => {
   }, { scope: containerRef });
 
   // Helper to render the infinite strip
+// Helper to render the infinite strip
   const renderStrip = (ref) => (
     <div className="flex h-full w-max" ref={ref}>
-      {[...PLACEHOLDERS, ...PLACEHOLDERS].map((item, idx) => (
-        <div 
-          key={`${item.id}-${idx}`}
-          className="h-full w-[40vh] bg-zinc-900 border-r border-zinc-950 flex flex-col items-center justify-center relative group overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-zinc-800/50 group-hover:bg-zinc-800/80 transition-colors duration-500" />
-          <span className="relative z-10 font-mono text-xs text-zinc-500 tracking-widest group-hover:text-white transition-colors">
-            {item.text}
-          </span>
-          <div className="absolute bottom-4 left-4 w-2 h-2 bg-indigo-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-        </div>
-      ))}
+      {/* Render items twice for infinite loop */}
+      {[...PLACEHOLDERS, ...PLACEHOLDERS].map((item, idx) => {
+        
+        // FIX: Use modulo (%) so the second half (indices 6-11) loads images 1-6 again
+        const imageIndex = (idx % PLACEHOLDERS.length) + 1; 
+
+        return (
+          <div 
+            key={`${item.id}-${idx}`}
+            className="h-full w-[40vh] bg-zinc-900 border-r border-zinc-950 flex flex-col items-center justify-center relative group overflow-hidden duration-500 hover:scale-105"
+            style={{
+                // Now both Index 0 and Index 6 will point to "1.jpg"
+                backgroundImage: `url(src/assets/HeroAssets/${imageIndex}.jpg)`, 
+                backgroundPosition: "center", 
+                backgroundSize: "cover"
+            }}
+          >
+            <div className="absolute bottom-4 left-4 w-2 h-2 bg-indigo-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+        );
+      })}
+    </div>
+  );
+  const renderStripBottom = (ref) => (
+    <div className="flex h-full w-max" ref={ref}>
+      {/* Render items twice for infinite loop */}
+      {[...PLACEHOLDERS, ...PLACEHOLDERS].map((item, idx) => {
+        
+        // FIX: Use modulo (%) so the second half (indices 6-11) loads images 1-6 again
+        const imageIndex = (idx % PLACEHOLDERS.length) + 1; 
+
+        return (
+          <div 
+            key={`${item.id}-${idx}`}
+            className="h-full w-[40vh] border-r flex flex-col items-center justify-center relative group overflow-hidden duration-500 hover:scale-105"
+            style={{
+                // Now both Index 0 and Index 6 will point to "1.jpg"
+                backgroundImage: `url(src/assets/HeroAssets/${imageIndex+6}.jpg)`, 
+                backgroundPosition: "center", 
+                backgroundSize: "cover"
+            }}
+          >
+            <div className="absolute bottom-4 left-4 w-2 h-2 bg-indigo-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+        );
+      })}
     </div>
   );
 
@@ -113,7 +149,7 @@ const HeroSection = () => {
                 {/* TOP CAROUSEL WRAPPER */}
                 <div 
                     ref={topCarouselRef}
-                    className='carousel w-[120vw] h-[25vh] absolute top-0 translate-y-[-50%] translate-x-[-5%] overflow-hidden bg-zinc-950/50 backdrop-blur-sm border-y border-white/5'
+                    className='carousel w-[120vw] h-[25vh] absolute top-0 translate-y-[-50%] translate-x-[-5%] overflow-hidden backdrop-blur-sm border-y border-white/5'
                 >
                    {renderStrip(topStripRef)}
                 </div>
@@ -121,19 +157,19 @@ const HeroSection = () => {
                 {/* CENTER LENS */}
                 <div 
                   ref={lensRef}
-                  className='h-[75%] aspect-square z-10 rounded-full border border-white/10 bg-zinc-950/80 backdrop-blur-md flex items-center justify-center shadow-2xl shadow-black/50'
+                  className='h-[60%] md:h-[65%] lg:h-[75%] aspect-square z-10 rounded-full border border-white/10 bg-zinc-950 backdrop-blur-md flex items-center justify-center shadow-2xl shadow-black/50'
                 >
-                   <div className="w-[85%] h-[85%] rounded-full border border-dashed border-white/10 flex items-center justify-center">
-                     <Camera size={64} className="text-white/20" />
+                   <div className="w-[85%] h-[85%] rounded-full border border-dashed border-white/10 flex items-center justify-center scale-190" style={{backgroundImage: "url(src/assets/HeroAssets/lens1.png)", backgroundPosition: 'center', backgroundSize: 'cover'}}>
+                     
                    </div>
                 </div>
 
                 {/* BOTTOM CAROUSEL WRAPPER */}
                 <div 
                     ref={bottomCarouselRef}
-                    className='carousel w-[120vw] h-[25vh] absolute bottom-0 translate-y-[50%] translate-x-[5%] overflow-hidden bg-zinc-950/50 backdrop-blur-sm border-y border-white/5'
+                    className='carousel w-[120vw] h-[25vh] absolute bottom-0 translate-y-[50%] translate-x-[5%] overflow-hidden backdrop-blur-sm border-y border-white/5'
                 >
-                    {renderStrip(bottomStripRef)}
+                    {renderStripBottom(bottomStripRef)}
                 </div>      
             </div>
             

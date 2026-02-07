@@ -23,7 +23,7 @@ function App() {
  
   return (
       <BrowserRouter>
-        <NavBar />
+        {<NavBar />}
         <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} /> 
         {isLoading? (<Loading onComplete={() => setIsLoading(false)} />):
           (<div>
@@ -33,8 +33,9 @@ function App() {
             
     
         </Routes>
-        </div>)}
         <Footer />
+        </div>)}
+        
         
       </BrowserRouter>
   )
